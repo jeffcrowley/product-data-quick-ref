@@ -1,0 +1,2 @@
+class FamiliesController < ApiController
+end
