@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card, Button, Segment, Grid } from "semantic-ui-react";
+import { Button, Segment, Grid } from "semantic-ui-react";
+import ProductInfo from "./ProductInfo";
 
 class Product extends Component {
   state = { isExpanded: false };
@@ -20,7 +21,7 @@ class Product extends Component {
 
   toggleProductInfo = () => {
     if (this.state.isExpanded) {
-      return <p>Info!</p>;
+      return <ProductInfo product={this.props.product} />;
     }
   };
 
@@ -30,7 +31,7 @@ class Product extends Component {
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column>
-              <h3>{this.props.product.name}</h3>
+              <h2>{this.props.product.name}</h2>
             </Grid.Column>
             <Grid.Column>
               <Button
