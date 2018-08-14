@@ -25,11 +25,9 @@ class App extends Component {
   }
 
   updateProducts = searchTerm => {
-    console.log(searchTerm);
     let filteredProducts = this.state.allProducts.filter(product =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    console.log(filteredProducts);
     this.setState({ filteredProducts: filteredProducts });
   };
 

@@ -2,7 +2,7 @@ class ProductsController < ApiController
 
     # /api/products
     def index
-        @products = Product.all
+        @products = Product.all.order(:name)
         render json: @products.to_json(include: {family: {except: [:created_at, :updated_at]}}, except: [:created_at, :updated_at, :family_id])
     end
 

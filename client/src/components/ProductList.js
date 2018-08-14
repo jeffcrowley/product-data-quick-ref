@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {} from "semantic-ui-react";
 import Product from "./Product";
 
 class ProductList extends Component {

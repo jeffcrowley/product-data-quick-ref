@@ -8,24 +8,7 @@ class SearchBar extends Component {
       return searchField.value;
     };
 
-    // let updateSearchTerm = () => {
-    //   searchTerm = searchField.value;
-    // };
-
-    // searchField.addEventListener("keydown", e => {
-    //   if (e.key === "Backspace") {
-    //     console.log("backspace!");
-    //     searchTerm && searchTerm.slice(0, -1);
-    //     console.log(searchTerm);
-    //   }
-    // });
-    // searchField.addEventListener("keypress", e => {
-    //   searchTerm += e.key;
-    //   console.log(searchTerm);
-    //   this.props.updateProducts(searchTerm);
-    // });
     searchField.addEventListener("input", e => {
-      console.log(searchTerm());
       this.props.updateProducts(searchTerm());
     });
   }
