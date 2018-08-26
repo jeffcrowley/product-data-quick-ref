@@ -3,6 +3,7 @@ import { Container, Divider } from "semantic-ui-react";
 import HeaderComponent from "./components/Header";
 import ProductList from "./components/ProductList";
 import SearchBar from "./components/SearchBar";
+import Scroller from "./components/Scroller";
 
 class App extends Component {
   state = {
@@ -34,12 +35,18 @@ class App extends Component {
         .includes(this.state.searchInput.toLowerCase());
     });
     return (
-      <Container text>
-        <HeaderComponent />
-        <SearchBar searchChange={this.searchChange} />
-        <Divider section />
-        <ProductList products={filteredProducts} />
-      </Container>
+      <div>
+        <Container text>
+          <HeaderComponent />
+          <SearchBar searchChange={this.searchChange} />
+          <Divider section />
+        </Container>
+        <Scroller>
+          <Container text>
+            <ProductList products={filteredProducts} />
+          </Container>
+        </Scroller>
+      </div>
     );
   }
 }
