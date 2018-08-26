@@ -6,8 +6,8 @@ import SearchBar from "./components/SearchBar";
 
 class App extends Component {
   state = {
-    filteredProducts: {},
-    allProducts: {}
+    products: [],
+    searchInput: ""
   };
 
   fetch = endpoint => {
@@ -19,25 +19,26 @@ class App extends Component {
 
   componentDidMount() {
     this.fetch("/api/products").then(products => {
-      products &&
-        this.setState({ filteredProducts: products, allProducts: products });
+      products && this.setState({ products: products });
     });
   }
 
-  updateProducts = searchTerm => {
-    let filteredProducts = this.state.allProducts.filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    this.setState({ filteredProducts: filteredProducts });
+  searchChange = event => {
+    this.setState({ searchInput: event.target.value });
   };
 
   render() {
+    const filteredProducts = this.state.products.filter(product => {
+      return product.name
+        .toLowerCase()
+        .includes(this.state.searchInput.toLowerCase());
+    });
     return (
       <Container text>
         <HeaderComponent />
-        <SearchBar updateProducts={this.updateProducts} />
+        <SearchBar searchChange={this.searchChange} />
         <Divider section />
-        <ProductList products={this.state.filteredProducts} />
+        <ProductList products={filteredProducts} />
       </Container>
     );
   }
