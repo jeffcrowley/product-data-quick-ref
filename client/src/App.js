@@ -43,7 +43,17 @@ class App extends Component {
         </Container>
         <Scroller>
           <Container text>
-            <ProductList products={filteredProducts} />
+            {/* Dual ternary. If there are filtered products, show them.
+            If there are no filtered products, 
+            then there are either no products found in the search, or, 
+            if the search field is blank, the API is loading. */}
+            {filteredProducts.length ? (
+              <ProductList products={filteredProducts} />
+            ) : this.state.searchInput ? (
+              <p className="ui center aligned segment">No products found</p>
+            ) : (
+              <p className="ui center aligned segment">Loading...</p>
+            )}
           </Container>
         </Scroller>
       </div>
